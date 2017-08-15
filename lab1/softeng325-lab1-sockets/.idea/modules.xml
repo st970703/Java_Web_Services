@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/softeng325-lab1-sockets-client/softeng325-lab1-sockets-client.iml" filepath="$PROJECT_DIR$/softeng325-lab1-sockets-client/softeng325-lab1-sockets-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/softeng325-lab1-sockets-common/softeng325-lab1-sockets-common.iml" filepath="$PROJECT_DIR$/softeng325-lab1-sockets-common/softeng325-lab1-sockets-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/softeng325-lab1-sockets-parent.iml" filepath="$PROJECT_DIR$/softeng325-lab1-sockets-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/softeng325-lab1-sockets-server/softeng325-lab1-sockets-server.iml" filepath="$PROJECT_DIR$/softeng325-lab1-sockets-server/softeng325-lab1-sockets-server.iml" />
+    </modules>
+  </component>
+</project>
