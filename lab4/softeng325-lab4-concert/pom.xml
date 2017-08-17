@@ -6,17 +6,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>softeng325-parent</name>
-	
+
 	<properties>
 		<java.version>1.8</java.version>
 		<slf.version>1.7.12</slf.version>
+		<resteasy.version>3.1.4.Final</resteasy.version>
 	</properties>
-	
+
 	<modules>
 		<module>softeng325-lab4-concert-domain-model</module>
 		<module>softeng325-lab4-concert-web-service</module>
 	</modules>
-	
+
 	<dependencies>
 		<!-- Hibernate JPA provider. -->
 		<dependency>
@@ -36,6 +37,36 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- RESTEasy implementation -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+		<!-- RESTEasy Client API -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+		<!-- RESTEasy deployment library -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-servlet-initializer</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+		<!-- Required for JAXB. -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxb-provider</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+		<!-- Joda date/time library -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
 		</dependency>
 		<!-- Logging. -->
 		<dependency>
