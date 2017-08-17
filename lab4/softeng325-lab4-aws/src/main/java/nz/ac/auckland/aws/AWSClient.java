@@ -1,6 +1,7 @@
 package nz.ac.auckland.aws;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -73,34 +74,67 @@ public class AWSClient {
 		List<String> imageNames = getImageNames(s3);
 
 		// Download the images.
-		download2(s3, imageNames);
+		download(s3, imageNames);
 	}
 
 	/**
 	 * Finds image names stored in a bucket named AWS_BUCKET.
-	 * 
+	 *
 	 * @param s3 the AmazonS3 connection.
-	 * 
+	 *
 	 * @return a List of images names.
-	 * 
+	 *
 	 */
 	private static List<String> getImageNames(AmazonS3 s3) {
-		//
-		// Your code here
-		//
+
+		ObjectListing ol = s3.listObjects(AWS_BUCKET);
+
+		List<S3ObjectSummary> objects = ol.getObjectSummaries();
+
+		List<String> imgList = new ArrayList<String>();
+
+		for (S3ObjectSummary os: objects) {
+			System.out.println(os.getKey());
+			imgList.add(os.getKey());
+		}
+
+
+		return imgList;
 	}
 
 	/**
 	 * Downloads images in the bucket named AWS_BUCKET.
-	 * 
+	 *
 	 * @param s3 the AmazonS3 connection.
-	 * 
+	 *
 	 * @param imageNames the named images to download.
-	 * 
+	 *
 	 */
 	private static void download(AmazonS3 s3, List<String> imageNames) {
-		//
-		// Your code here
-		//
+		TransferManager xfer_mgr = TransferManagerBuilder
+				.standard()
+				.withS3Client(s3)
+				.build();
+
+		try {
+			for (String str: imageNames) {
+				File file = new File(str);
+
+				Download xfer = xfer_mgr.download(AWS_BUCKET, str, file);
+			}
+
+		} catch (AmazonServiceException e) {
+			System.err.println(e.getErrorMessage());
+			System.exit(1);
+		}
+
+		try {
+			// waste time
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		xfer_mgr.shutdownNow();
 	}
 }
